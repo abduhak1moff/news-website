@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import BusinessPage from "./pages/BusinessPage";
+import EntertainmentPage from "./pages/EntertainmentPage";
+import GeneralPage from "./pages/GeneralPage";
+import HealthPage from "./pages/HealthPage";
+import SciencePage from "./pages/SciencePage";
+import SportsPage from "./pages/SportsPage";
+import TechnologyPage from "./pages/TechnologyPage";
+import NotFund from "./pages/NotFund";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="business" element={<BusinessPage />} />
+          <Route path="entertainment" element={<EntertainmentPage />} />
+          <Route path="general" element={<GeneralPage />} />
+          <Route path="health" element={<HealthPage />} />
+          <Route path="science" element={<SciencePage />} />
+          <Route path="sports" element={<SportsPage />} />
+          <Route path="technology" element={<TechnologyPage />} />
+        </Route>
+        <Route path=" *" element={<NotFund />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
